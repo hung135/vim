@@ -27,12 +27,13 @@ function! MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
-
+if has("win32")
 nnoremap <f2> :!C:\apps\batfiles\psql.bat %:p<cr>
 nnoremap <f9> :botright vnew<cr>:read !C:\apps\batfiles\psql.bat #:p<cr>
 nnoremap <f3> :!C:\apps\batfiles\sqlcmd.bat %:p <cr>
 nnoremap <f4> :!explorer.exe %:h <cr>
 nnoremap <f6> :!C:\apps\batfiles\psql.bat test.sql<cr>
+endif
 set number
 
 set relativenumber
@@ -40,9 +41,9 @@ set backup
 set swapfile
 set undofile
 inoremap jk <ESC>
-set undodir=c:\temp\.vim\tmp\undo\
-set backupdir=c:\temp\.vim\tmp\backup\
-set directory=c:\temp\.vim\tmp\swap\
+set undodir=~/.vim/Tmp\undo\
+set backupdir=~/.vim/tmp\backup\
+set directory=~/.vim/tmp\swap\
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
