@@ -54,7 +54,9 @@ endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
-
+nmap <f6> ma*:%s//v_&/gc<bar>norm `a<cr>
+nmap <f7> ma*:%s//p_&/gc<bar>norm `a<cr>
+nmap <f8> ma*:%s///gc<bar>norm `a<left><left><left><left><left><left><left><left><left><left><left>
 nmap <f5> mz*crs:%s//<c-r><c-w>/g<cr>`z
 nno <up> <Nop>
 nno <left> <Nop>
@@ -65,10 +67,15 @@ inoremap <left> <Nop>
 inoremap <right> <Nop>
 inoremap <down> <Nop>
 inoremap jj <esc>
+" repeat the last [count]motion or the last zap-key:
+:noremap <expr> ; repmo#LastKey(';')|sunmap ;
+:noremap <expr> , repmo#LastRevKey(',')|sunmap ,
+
 nnoremap ,d :%s/\n$//g<cr>:g/^\s*$/d<cr>
 let $PATH .= ';C:\Users\nguyenhu\AppData\Local\GitHub\PortableGit_d7effa1a4a322478cd29c826b52a0c118ad3db11\cmd'
 call plug#begin('~/.vim/plugged')
 " Put plugins here
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
+Plug 'houl/vim-repmo'
 call plug#end()
