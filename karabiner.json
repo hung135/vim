@@ -607,7 +607,7 @@
                     }
                 }
             ],
-            "name": "New profile",
+            "name": "Hung profile",
             "parameters": {
                 "delay_milliseconds_before_open_device": 1000
             },
@@ -728,7 +728,7 @@
                     }
                 }
             ],
-            "name": "New profile",
+            "name": "Hung profile2",
             "parameters": {
                 "delay_milliseconds_before_open_device": 1000
             },
